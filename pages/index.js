@@ -30,7 +30,7 @@ import { DiJava } from 'react-icons/di'
 import Image from 'next/image'
 import styled from '@emotion/styled'
 import NextJsIcon from '../components/icons/nextjs'
-import MongoDBIcon from '../components/icons/mongoDB'
+import MongoDBIcon from '../components/icons/mongoDb'
 import FormContact from '../components/form'
 import TechSlider from '../components/slider'
 
