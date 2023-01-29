@@ -39,7 +39,7 @@ const ProfileImage = chakra(Image, {
 })
 
 const MotionDiv = styled.div`
-  height: 20px;
+  height: 22px;
   line-height: 20px;
   overflow: hidden;
 `

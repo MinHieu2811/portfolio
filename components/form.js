@@ -50,7 +50,7 @@ function FormContact() {
             <Field name='phone' validate={validatePhone}>
               {({ field, form }) => (
                 <FormControl isInvalid={form.errors.phone && form.touched.phone} isRequired marginTop={2}>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>Phone</FormLabel>
                   <Input {...field} variant="contained" placeholder='Phone'/>
                   <FormErrorMessage>{form.errors.phone}</FormErrorMessage>
                 </FormControl>
