@@ -11,7 +11,7 @@ import {
   DiJava
 } from 'react-icons/di'
 import NextJsIcon from './icons/nextjs'
-import MongoDBIcon from './icons/mongoDB'
+import MongoDBIcon from './icons/mongoDb'
 // Import Swiper styles
 import 'swiper/css'
 
