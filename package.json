@@ -1,0 +1,34 @@
+{
+  "name": "porfolio",
+  "version": "1.0.0",
+  "description": "MinhHieu's portfolio",
+  "scripts": {
+    "dev": "next dev -H 0.0.0.0",
+    "build": "next build",
+    "start": "next start",
+    "prettier": "prettier --write .",
+    "lint": "next lint"
+  },
+  "author": "MinHieu",
+  "license": "MIT",
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.17",
+    "@chakra-ui/react": "^2.4.9",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "formik": "^2.2.9",
+    "framer-motion": "^8.5.2",
+    "next": "^13.1.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
+    "swiper": "^8.4.6",
+    "three": "^0.148.0",
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.32.0",
+    "eslint-config-next": "^13.1.5",
+    "prettier": "^2.8.3"
+  }
+}
