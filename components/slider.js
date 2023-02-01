@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay } from 'swiper'
+import { Autoplay, Pagination } from 'swiper'
 import {
   IoLogoHtml5,
   IoLogoCss3,
@@ -14,13 +14,16 @@ import NextJsIcon from './icons/nextjs'
 import MongoDBIcon from './icons/mongoDb'
 // Import Swiper styles
 import 'swiper/css'
+import 'swiper'
+import 'swiper/css/pagination';
 
 function TechSlider() {
   return (
     <Swiper
-    modules={[Autoplay]} 
+    modules={[Autoplay, Pagination]} 
     spaceBetween={20} 
-    // centeredSlides 
+    autoplay
+    pagination={{clickable: true}}
     slidesPerView={3} 
     loop
     style={{margin: "30px 0px"}}

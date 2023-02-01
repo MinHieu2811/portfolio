@@ -12,3 +12,38 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     justify-content: center;
 }
+
+.swiper-wrapper {
+    margin-bottom: 20px;
+}
+
+.swiper-pagination {
+    bottom: -5px !important;
+}
+
+.swiper-pagination-bullet {
+    transition: width 0.5s ease !important;
+}
+/* 
+.swiper-pagination-bullet-active {
+    width: 20px !important;
+    border-radius: 5px !important;
+} */
+
+.swiper-pagination-bullet-active {
+    width: 20px !important;
+    border-radius: 5px !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --swiper-theme-color: #9AE6B4 !important;
+        --swiper-pagination-bullet-inactive-color: gray;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --swiper-theme-color: #38A169 !important;
+    }
+}

@@ -24,7 +24,7 @@ import {
   IoLogoCss3,
   IoLogoReact,
   IoLogoJavascript,
-  IoLogoNodejs,
+  IoLogoNodejs
 } from 'react-icons/io5'
 import { DiJava } from 'react-icons/di'
 import Image from 'next/image'
@@ -50,10 +50,12 @@ const MotionPara = styled('div')`
   position: relative;
   top: 0;
   animation: slide 12s steps(2) infinite;
-
+  :first-of-type {
+    margin-bottom: 2px;
+  }
   @keyframes slide {
     100% {
-      top: -40px;
+      top: -42px;
     }
   }
 
@@ -143,6 +145,12 @@ const Home = () => (
           problems with code. I have 1 year experience with React, 5 months with
           NextJs and basic knowledge of SEO, Boostrap, Git, RestfulAPI
         </Paragraph>
+
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Button sx={{ margin: '20px auto' }}>
+            <Link href='cv.pdf' download>Download CV</Link>
+          </Button>
+        </Box>
       </Section>
 
       <Section delay={0.3}>
@@ -168,11 +176,12 @@ const Home = () => (
           I ♥
         </Heading>
         <Paragraph>
-          Music, reading, story writing, football, exploring the latest technology and
-          theatre may all be hobbies. Interestingly, one person’s profession may
-          be another person’s hobby. For instance, one could be a professional
-          flautist, but for another playing the flute could be a hobby. A hobby
-          is a fun activity that is pursued during one’s leisure hours.
+          Music, reading, story writing, football, exploring the latest
+          technology and theatre may all be hobbies. Interestingly, one person’s
+          profession may be another person’s hobby. For instance, one could be a
+          professional flautist, but for another playing the flute could be a
+          hobby. A hobby is a fun activity that is pursued during one’s leisure
+          hours.
         </Paragraph>
       </Section>
 
@@ -240,7 +249,7 @@ const Home = () => (
         <Heading as="h3" variant="section-title">
           Skills
         </Heading>
-        <Box sx={{ display: 'flex', marginBottom: "50px" }}>
+        <Box sx={{ display: 'flex', marginBottom: '50px' }}>
           <Box sx={{ flex: 2 }}>
             <IoLogoHtml5
               style={{ fontSize: '32px', marginRight: '5px', marginTop: '5px' }}
@@ -261,7 +270,7 @@ const Home = () => (
                 marginTop: '5px',
                 backgroundColor: '#FFFFFF',
                 borderRadius: '50%',
-                border: '1px solid',
+                border: '1px solid'
               }}
             />
             <IoLogoNodejs
@@ -270,7 +279,9 @@ const Home = () => (
             <MongoDBIcon
               style={{ width: '32px', marginRight: '5px', marginTop: '5px' }}
             />
-            <DiJava style={{ fontSize: '32px', marginRight: '5px', marginTop: '5px' }}/>
+            <DiJava
+              style={{ fontSize: '32px', marginRight: '5px', marginTop: '5px' }}
+            />
           </Box>
           <Box sx={{ flex: 10 }}>
             <Stack
