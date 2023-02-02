@@ -39,7 +39,7 @@ const Ecommerce = ({ data }) => {
             loop
             style={{ margin: '30px 0px' }}
           >
-            {dataProject.images.map((item, index) => (
+            {dataProject && dataProject.images.map((item, index) => (
               <SwiperSlide key={index}>
                 <Image
                   src={item}
@@ -55,20 +55,20 @@ const Ecommerce = ({ data }) => {
         </Box>
         <Box>
           <Heading as="h2" noOfLines={1}>
-            {dataProject.title}
+            {dataProject && dataProject.title}
           </Heading>
           <Text fontSize="md" marginY={2}>
-            {dataProject.description}
+            {dataProject && dataProject.description}
           </Text>
           <LinkBox
             as={NextLink}
-            href={dataProject.linkGithub}
+            href={dataProject ? dataProject.linkGithub : '#'}
             target="_blank"
             scroll={false}
             cursor="pointer"
             sx={{ margin: 'auto' }}
           >
-            <LinkOverlay as="div" href={dataProject.linkGithub} target="_blank">
+            <LinkOverlay as="div" href={dataProject ? dataProject.linkGithub : '#'} target="_blank">
               <Button
                 variant="ghost"
                 colorScheme="teal"
@@ -88,10 +88,10 @@ const Ecommerce = ({ data }) => {
             <ListItem>
               <ListIcon as={MdSettings} />
               Front-end:{' '}
-              {dataProject.technology.frontend.length > 1 ? (
+              {dataProject && dataProject.technology.frontend.length > 1 ? (
                 <span>{dataProject.technology.frontend.join(', ')}</span>
               ) : (
-                dataProject.technology.frontend.map((item, index) => (
+                dataProject && dataProject.technology.frontend.map((item, index) => (
                   <span key={index}>{item}</span>
                 ))
               )}
@@ -99,10 +99,10 @@ const Ecommerce = ({ data }) => {
             <ListItem>
               <ListIcon as={MdSettings} />
               Back-end:{' '}
-              {dataProject.technology.backend.length > 1 ? (
+              {dataProject && dataProject.technology.backend.length > 1 ? (
                 <span>{dataProject.technology.backend.join(', ')}</span>
               ) : (
-                dataProject.technology.backend.map((item, index) => (
+                dataProject && dataProject.technology.backend.map((item, index) => (
                   <span key={index}>{item}</span>
                 ))
               )}
@@ -110,7 +110,7 @@ const Ecommerce = ({ data }) => {
             <ListItem>
               <ListIcon as={MdSettings} />
               Database:{' '}
-              <span>{dataProject.technology.database.join(', ')}</span>
+              <span>{dataProject && dataProject.technology.database.join(', ')}</span>
             </ListItem>
           </List>
         </Box>

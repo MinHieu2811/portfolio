@@ -6,11 +6,11 @@ import {
   Box,
   Button,
   List,
-  Progress,
+  Grid,
   ListItem,
   useColorModeValue,
   chakra,
-  Stack
+  GridItem
 } from '@chakra-ui/react'
 // import axios from 'axios'
 import Paragraph from '../components/paragraph'
@@ -26,13 +26,13 @@ import {
   IoLogoCss3,
   IoLogoReact,
   IoLogoJavascript,
-  IoLogoNodejs
+  IoLogoNodejs,
 } from 'react-icons/io5'
-import { DiJava } from 'react-icons/di'
+import { SiTypescript } from 'react-icons/si'
+import { DiJava, DiMongodb, DiGulp } from 'react-icons/di'
 import Image from 'next/image'
 import styled from '@emotion/styled'
 import NextJsIcon from '../components/icons/nextjs'
-import MongoDBIcon from '../components/icons/mongoDb'
 import FormContact from '../components/form'
 import TechSlider from '../components/slider'
 
@@ -82,15 +82,15 @@ const MotionPara = styled('div')`
 `
 
 const Home = ({ data }) => {
-  const validateTypePlatform = (title) => {
+  const validateTypePlatform = title => {
     const titleString = title.toString()
-    if(titleString === 'Github') {
+    if (titleString === 'Github') {
       return <IoLogoGithub />
-    } else if(titleString === 'Facebook') {
+    } else if (titleString === 'Facebook') {
       return <IoLogoFacebook />
-    } else if(titleString === 'Instagram') {
+    } else if (titleString === 'Instagram') {
       return <IoLogoInstagram />
-    } else if(titleString === 'Google') {
+    } else if (titleString === 'Google') {
       return <IoLogoGoogle />
     }
   }
@@ -182,9 +182,7 @@ const Home = ({ data }) => {
           <Heading as="h3" variant="section-title">
             {data.hobby.title}
           </Heading>
-          <Paragraph>
-            {data.hobby.content}
-          </Paragraph>
+          <Paragraph>{data.hobby.content}</Paragraph>
         </Section>
 
         <Section delay={0.7}>
@@ -192,19 +190,19 @@ const Home = ({ data }) => {
             {data.online.title}
           </Heading>
           <List>
-          {data.online.content.map((item, index) => (
-            <ListItem key={index}>
-            <Link href={item.link} target="_blank">
-              <Button
-                variant="ghost"
-                colorScheme="teal"
-                leftIcon={validateTypePlatform(item.type)}
-              >
-                {item.display}
-              </Button>
-            </Link>
-          </ListItem>
-          ))}
+            {data.online.content.map((item, index) => (
+              <ListItem key={index}>
+                <Link href={item.link} target="_blank">
+                  <Button
+                    variant="ghost"
+                    colorScheme="teal"
+                    leftIcon={validateTypePlatform(item.type)}
+                  >
+                    {item.display}
+                  </Button>
+                </Link>
+              </ListItem>
+            ))}
           </List>
         </Section>
 
@@ -215,137 +213,112 @@ const Home = ({ data }) => {
             Skills
           </Heading>
           <Box sx={{ display: 'flex', marginBottom: '50px' }}>
-            <Box sx={{ flex: 2 }}>
-              <IoLogoHtml5
-                style={{
-                  fontSize: '32px',
-                  marginRight: '5px',
-                  marginTop: '5px'
-                }}
-              />
-              <IoLogoCss3
-                style={{
-                  fontSize: '32px',
-                  marginRight: '5px',
-                  marginTop: '5px'
-                }}
-              />
-              <IoLogoJavascript
-                style={{
-                  fontSize: '32px',
-                  marginRight: '5px',
-                  marginTop: '5px'
-                }}
-              />
-              <IoLogoReact
-                style={{
-                  fontSize: '32px',
-                  marginRight: '5px',
-                  marginTop: '5px'
-                }}
-              />
-              <NextJsIcon
-                style={{
-                  width: '32px',
-                  marginRight: '5px',
-                  marginTop: '5px',
-                  backgroundColor: '#FFFFFF',
-                  borderRadius: '50%',
-                  border: '1px solid'
-                }}
-              />
-              <IoLogoNodejs
-                style={{
-                  fontSize: '32px',
-                  marginRight: '5px',
-                  marginTop: '5px'
-                }}
-              />
-              <MongoDBIcon
-                style={{ width: '32px', marginRight: '5px', marginTop: '5px' }}
-              />
-              <DiJava
-                style={{
-                  fontSize: '32px',
-                  marginRight: '5px',
-                  marginTop: '5px'
-                }}
-              />
-            </Box>
-            <Box sx={{ flex: 10 }}>
-              <Stack
-                sx={{
-                  height: '32px',
-                  justifyContent: 'center',
-                  marginTop: '5px'
-                }}
-              >
-                <Progress colorScheme="green" size="sm" value={80} />
-              </Stack>
-              <Stack
-                sx={{
-                  height: '32px',
-                  justifyContent: 'center',
-                  marginTop: '5px'
-                }}
-              >
-                <Progress colorScheme="green" size="sm" value={70} />
-              </Stack>
-              <Stack
-                sx={{
-                  height: '32px',
-                  justifyContent: 'center',
-                  marginTop: '5px'
-                }}
-              >
-                <Progress colorScheme="green" size="sm" value={75} />
-              </Stack>
-              <Stack
-                sx={{
-                  height: '32px',
-                  justifyContent: 'center',
-                  marginTop: '5px'
-                }}
-              >
-                <Progress colorScheme="green" size="sm" value={70} />
-              </Stack>
-              <Stack
-                sx={{
-                  height: '32px',
-                  justifyContent: 'center',
-                  marginTop: '5px'
-                }}
-              >
-                <Progress colorScheme="green" size="sm" value={70} />
-              </Stack>
-              <Stack
-                sx={{
-                  height: '32px',
-                  justifyContent: 'center',
-                  marginTop: '5px'
-                }}
-              >
-                <Progress colorScheme="green" size="sm" value={50} />
-              </Stack>
-              <Stack
-                sx={{
-                  height: '32px',
-                  justifyContent: 'center',
-                  marginTop: '5px'
-                }}
-              >
-                <Progress colorScheme="green" size="sm" value={50} />
-              </Stack>
-              <Stack
-                sx={{
-                  height: '32px',
-                  justifyContent: 'center',
-                  marginTop: '5px'
-                }}
-              >
-                <Progress colorScheme="green" size="sm" value={50} />
-              </Stack>
-            </Box>
+            <Grid templateColumns="repeat(5, 1fr)" gap={6} sx={{width: '100%'}}>
+              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
+                <IoLogoHtml5
+                  style={{
+                    fontSize: '40px',
+                    marginRight: '5px',
+                    marginTop: '5px'
+                  }}
+                />
+              </GridItem>
+              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
+                <IoLogoCss3
+                  style={{
+                    fontSize: '40px',
+                    marginRight: '5px',
+                    marginTop: '5px'
+                  }}
+                />
+              </GridItem>
+              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
+                <IoLogoJavascript
+                  style={{
+                    fontSize: '40px',
+                    marginRight: '5px',
+                    marginTop: '5px'
+                  }}
+                />
+              </GridItem>
+              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
+                <IoLogoJavascript
+                  style={{
+                    fontSize: '40px',
+                    marginRight: '5px',
+                    marginTop: '5px'
+                  }}
+                />
+              </GridItem>
+              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
+                <IoLogoReact
+                  style={{
+                    fontSize: '40px',
+                    marginRight: '5px',
+                    marginTop: '5px'
+                  }}
+                />
+              </GridItem>
+              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
+                <NextJsIcon
+                  style={{
+                    width: '40px',
+                    marginRight: '5px',
+                    height: '40px',
+                    marginTop: '5px',
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: '50%',
+                    border: '1px solid'
+                  }}
+                />
+              </GridItem>
+              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
+                <IoLogoNodejs
+                  style={{
+                    fontSize: '40px',
+                    marginRight: '5px',
+                    marginTop: '5px'
+                  }}
+                />
+              </GridItem>
+              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
+                {/* <MongoDBIcon
+                  style={{
+                    width: '40px',
+                    marginRight: '5px',
+                    marginTop: '5px'
+                  }}
+                /> */}
+                <DiMongodb style={{
+                    fontSize: '40px',
+                    marginRight: '5px',
+                    marginTop: '5px'
+                  }}/>
+              </GridItem>
+              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
+                <DiJava
+                  style={{
+                    fontSize: '40px',
+                    marginRight: '5px',
+                    marginTop: '5px'
+                  }}
+                />
+              </GridItem>
+              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
+                <DiGulp style={{
+                    fontSize: '40px',
+                    marginRight: '5px',
+                    marginTop: '5px'
+                  }} />
+              </GridItem>
+              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
+                <SiTypescript style={{
+                    fontSize: '40px',
+                    marginRight: '5px',
+                    marginTop: '5px'
+                  }} />
+              </GridItem>
+            </Grid>
           </Box>
         </Section>
 

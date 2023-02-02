@@ -7,26 +7,24 @@ import {
   IoLogoReact,
   IoLogoNodejs
 } from 'react-icons/io5'
-import {
-  DiJava
-} from 'react-icons/di'
+import { DiJava, DiMongodb } from 'react-icons/di'
+import { SiTypescript } from 'react-icons/si'
 import NextJsIcon from './icons/nextjs'
-import MongoDBIcon from './icons/mongoDb'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper'
-import 'swiper/css/pagination';
+import 'swiper/css/pagination'
 
 function TechSlider() {
   return (
     <Swiper
-    modules={[Autoplay, Pagination]} 
-    spaceBetween={20} 
-    autoplay
-    pagination={{clickable: true}}
-    slidesPerView={3} 
-    loop
-    style={{margin: "30px 0px"}}
+      modules={[Autoplay, Pagination]}
+      spaceBetween={20}
+      autoplay
+      pagination={{ clickable: true }}
+      slidesPerView={3}
+      loop
+      style={{ margin: '30px 0px' }}
     >
       <SwiperSlide>
         <IoLogoHtml5
@@ -67,12 +65,27 @@ function TechSlider() {
         />
       </SwiperSlide>
       <SwiperSlide>
-        <MongoDBIcon
-          style={{ width: '52px', marginRight: '5px', marginTop: '5px' }}
+        <DiMongodb
+          style={{
+            fontSize: '32px',
+            marginRight: '5px',
+            marginTop: '5px'
+          }}
         />
       </SwiperSlide>
       <SwiperSlide>
-        <DiJava style={{ fontSize: '52px', marginRight: '5px', marginTop: '5px' }}/>
+        <DiJava
+          style={{ fontSize: '52px', marginRight: '5px', marginTop: '5px' }}
+        />
+      </SwiperSlide>
+      <SwiperSlide>
+        <SiTypescript
+          style={{
+            fontSize: '32px',
+            marginRight: '5px',
+            marginTop: '5px'
+          }}
+        />
       </SwiperSlide>
     </Swiper>
   )
