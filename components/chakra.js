@@ -4,6 +4,7 @@ import {
   localStorageManager
 } from '@chakra-ui/react'
 import theme from '../lib/theme'
+import axios from 'axios'
 
 export default function Chakra({ cookies, children }) {
   const colorModeManager =
@@ -19,8 +20,10 @@ export default function Chakra({ cookies, children }) {
 }
 
 export async function getServerSideProps({ req }) {
+  const dataFetch = await axios.get('http://localhost:3000/api/data').then((res) => res?.data)
   return {
     props: {
+      data: dataFetch,
       cookies: req.headers.cookie ?? ''
     }
   }
