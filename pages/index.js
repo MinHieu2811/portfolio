@@ -27,6 +27,7 @@ import {
   IoLogoReact,
   IoLogoJavascript,
   IoLogoNodejs,
+  IoLogoLinkedin
 } from 'react-icons/io5'
 import { SiTypescript } from 'react-icons/si'
 import { DiJava, DiMongodb, DiGulp } from 'react-icons/di'
@@ -92,6 +93,8 @@ const Home = ({ data }) => {
       return <IoLogoInstagram />
     } else if (titleString === 'Google') {
       return <IoLogoGoogle />
+    } else if(titleString === 'Linkedin') {
+      return <IoLogoLinkedin />
     }
   }
   return (

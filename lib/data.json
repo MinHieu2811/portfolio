@@ -52,6 +52,11 @@
           "type": "Google",
           "display": "cuunhatnhat51@gmail.com",
           "link": "mailto:cuunhatnhat51@gmail.com"
+        },
+        {
+          "type": "Linkedin",
+          "display":"Hieu Mihn",
+          "link": "https://www.linkedin.com/in/hiếu-mihn-477673242"
         }
       ]
     },
