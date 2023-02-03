@@ -25,9 +25,8 @@ import data from '../../lib/data'
 const Ecommerce = () => {
   const router = useRouter()
   const id = router.query.id
-  console.log(id)
+
   const dataProject = data.project[id]
-  console.log(dataProject)
   return (
     <Layout title="Projects">
       <Container sx={{ minHeight: '50vh' }}>
