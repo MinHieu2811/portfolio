@@ -20,8 +20,9 @@ import 'swiper/css'
 import { IoLogoGithub } from 'react-icons/io5'
 import { useRouter } from 'next/router'
 import 'swiper/css/pagination';
+import data from '../../lib/data'
 
-const Ecommerce = ({ data }) => {
+const Ecommerce = () => {
   const router = useRouter()
   const id = router.query.id
   console.log(id)

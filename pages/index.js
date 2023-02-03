@@ -36,6 +36,7 @@ import styled from '@emotion/styled'
 import NextJsIcon from '../components/icons/nextjs'
 import FormContact from '../components/form'
 import TechSlider from '../components/slider'
+import data from '../lib/data'
 
 const ProfileImage = chakra(Image, {
   shouldForwardProp: prop => ['width', 'height', 'src', 'alt'].includes(prop)
@@ -82,7 +83,7 @@ const MotionPara = styled('div')`
   }
 `
 
-const Home = ({ data }) => {
+const Home = () => {
   const validateTypePlatform = title => {
     const titleString = title.toString()
     if (titleString === 'Github') {
