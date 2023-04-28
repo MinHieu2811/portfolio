@@ -246,15 +246,6 @@ const Home = () => {
                 />
               </GridItem>
               <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
-                <IoLogoJavascript
-                  style={{
-                    fontSize: '40px',
-                    marginRight: '5px',
-                    marginTop: '5px'
-                  }}
-                />
-              </GridItem>
-              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
                 <IoLogoReact
                   style={{
                     fontSize: '40px',
