@@ -14,6 +14,10 @@ const LazyVoxelDog = dynamic(() => import('../voxel-dog'), {
   loading: () => <VoxelDogLoader />
 })
 
+const LazyBackground = dynamic(() => import('../background'), {
+  ssr: false
+})
+
 
 const Main = ({ children, router }) => {
   const routerObj = useRouter()
@@ -57,6 +61,7 @@ const Main = ({ children, router }) => {
       {/* {!routerObj.isReady && <Progress value={40} size="sm" colorScheme="green" isIndeterminate/>} */}
       {routeIsChanging && <nProgress />}
       <NavBar path={router.asPath} />
+      <LazyBackground />
 
       <Container maxW="container.md" pt={14} >
         <LazyVoxelDog />
