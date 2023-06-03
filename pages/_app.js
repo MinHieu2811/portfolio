@@ -17,7 +17,7 @@ function Website({ Component, pageProps, router }) {
           mode="wait"
           initial={true}
           onExitComplete={() => {
-            if (process.browser) {
+            if (typeof window !== 'undefined') {
               window.scrollTo({ top: 0 })
             }
           }}
