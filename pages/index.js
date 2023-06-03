@@ -12,7 +12,7 @@ import {
   chakra,
   GridItem
 } from '@chakra-ui/react'
-// import axios from 'axios'
+import { Tooltip } from '@chakra-ui/react'
 import Paragraph from '../components/paragraph'
 import { BioSection, BioYear } from '../components/bio'
 import Layout from '../components/layouts/article'
@@ -30,12 +30,12 @@ import {
   IoLogoLinkedin
 } from 'react-icons/io5'
 import { SiTypescript } from 'react-icons/si'
-import { DiJava, DiMongodb, DiGulp } from 'react-icons/di'
+import { DiMongodb } from 'react-icons/di'
+import { SiNestjs, SiPrisma, SiPostgresql } from 'react-icons/si'
 import Image from 'next/image'
 import styled from '@emotion/styled'
 import NextJsIcon from '../components/icons/nextjs'
 import FormContact from '../components/form'
-import TechSlider from '../components/slider'
 import data from '../lib/data'
 
 const ProfileImage = chakra(Image, {
@@ -94,7 +94,7 @@ const Home = () => {
       return <IoLogoInstagram />
     } else if (titleString === 'Google') {
       return <IoLogoGoogle />
-    } else if(titleString === 'Linkedin') {
+    } else if (titleString === 'Linkedin') {
       return <IoLogoLinkedin />
     }
   }
@@ -162,11 +162,13 @@ const Home = () => {
           <Paragraph>{data.work.content}</Paragraph>
 
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Button sx={{ margin: '20px auto' }}>
-              <Link href="cv.pdf" download>
-                Download CV
-              </Link>
-            </Button>
+            <Tooltip label="Download my CV">
+              <Button sx={{ margin: '20px auto' }}>
+                <Link href="cv.pdf" download>
+                  Download CV
+                </Link>
+              </Button>
+            </Tooltip>
           </Box>
         </Section>
 
@@ -210,108 +212,206 @@ const Home = () => {
           </List>
         </Section>
 
-        <TechSlider />
-
         <Section delay={0.9}>
           <Heading as="h3" variant="section-title">
             Skills
           </Heading>
           <Box sx={{ display: 'flex', marginBottom: '50px' }}>
-            <Grid templateColumns="repeat(5, 1fr)" gap={6} sx={{width: '100%'}}>
-              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
-                <IoLogoHtml5
-                  style={{
-                    fontSize: '40px',
-                    marginRight: '5px',
-                    marginTop: '5px'
-                  }}
-                />
+            <Grid
+              templateColumns="repeat(5, 1fr)"
+              gap={6}
+              sx={{ width: '100%' }}
+            >
+              <GridItem
+                w="100%"
+                h="10"
+                bg={useColorModeValue('#f0e7db', '#202023')}
+              >
+                <Tooltip label="HTML" placement="bottom">
+                  <Box display="flex" justifyContent="center">
+                    <IoLogoHtml5
+                      style={{
+                        fontSize: '40px',
+                        marginRight: '5px',
+                        marginTop: '5px'
+                      }}
+                    />
+                  </Box>
+                </Tooltip>
               </GridItem>
-              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
-                <IoLogoCss3
-                  style={{
-                    fontSize: '40px',
-                    marginRight: '5px',
-                    marginTop: '5px'
-                  }}
-                />
+              <GridItem
+                w="100%"
+                h="10"
+                bg={useColorModeValue('#f0e7db', '#202023')}
+              >
+                <Tooltip label="CSS">
+                  <Box display="flex" justifyContent="center">
+                    <IoLogoCss3
+                      style={{
+                        fontSize: '40px',
+                        marginRight: '5px',
+                        marginTop: '5px'
+                      }}
+                    />
+                  </Box>
+                </Tooltip>
               </GridItem>
-              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
-                <IoLogoJavascript
-                  style={{
-                    fontSize: '40px',
-                    marginRight: '5px',
-                    marginTop: '5px'
-                  }}
-                />
+              <GridItem
+                w="100%"
+                h="10"
+                bg={useColorModeValue('#f0e7db', '#202023')}
+              >
+                <Tooltip label="Javascript">
+                  <Box display="flex" justifyContent="center">
+                    <IoLogoJavascript
+                      style={{
+                        fontSize: '40px',
+                        marginRight: '5px',
+                        marginTop: '5px'
+                      }}
+                    />
+                  </Box>
+                </Tooltip>
               </GridItem>
-              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
-                <IoLogoReact
-                  style={{
-                    fontSize: '40px',
-                    marginRight: '5px',
-                    marginTop: '5px'
-                  }}
-                />
+              <GridItem
+                w="100%"
+                h="10"
+                bg={useColorModeValue('#f0e7db', '#202023')}
+              >
+                <Tooltip label="React">
+                  <Box display="flex" justifyContent="center">
+                    <IoLogoReact
+                      style={{
+                        fontSize: '40px',
+                        marginRight: '5px',
+                        marginTop: '5px'
+                      }}
+                    />
+                  </Box>
+                </Tooltip>
               </GridItem>
-              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
-                <NextJsIcon
-                  style={{
-                    width: '40px',
-                    marginRight: '5px',
-                    height: '40px',
-                    marginTop: '5px',
-                    backgroundColor: '#FFFFFF',
-                    borderRadius: '50%',
-                    border: '1px solid'
-                  }}
-                />
+              <GridItem
+                w="100%"
+                h="10"
+                bg={useColorModeValue('#f0e7db', '#202023')}
+              >
+                <Tooltip label="NextJs">
+                  <Box display="flex" justifyContent="center">
+                    <NextJsIcon
+                      style={{
+                        width: '40px',
+                        marginRight: '5px',
+                        height: '40px',
+                        marginTop: '5px',
+                        backgroundColor: '#FFFFFF',
+                        borderRadius: '50%',
+                        border: '1px solid'
+                      }}
+                    />
+                  </Box>
+                </Tooltip>
               </GridItem>
-              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
-                <IoLogoNodejs
-                  style={{
-                    fontSize: '40px',
-                    marginRight: '5px',
-                    marginTop: '5px'
-                  }}
-                />
+              <GridItem
+                w="100%"
+                h="10"
+                bg={useColorModeValue('#f0e7db', '#202023')}
+              >
+                <Tooltip label="Prisma">
+                  <Box display="flex" justifyContent="center">
+                    <SiPrisma
+                      style={{
+                        fontSize: '40px',
+                        marginRight: '5px',
+                        marginTop: '5px'
+                      }}
+                    />
+                  </Box>
+                </Tooltip>
               </GridItem>
-              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
-                {/* <MongoDBIcon
-                  style={{
-                    width: '40px',
-                    marginRight: '5px',
-                    marginTop: '5px'
-                  }}
-                /> */}
-                <DiMongodb style={{
-                    fontSize: '40px',
-                    marginRight: '5px',
-                    marginTop: '5px'
-                  }}/>
+              <GridItem
+                w="100%"
+                h="10"
+                bg={useColorModeValue('#f0e7db', '#202023')}
+              >
+                <Tooltip label="Postgresql">
+                  <Box display="flex" justifyContent="center">
+                    <SiPostgresql
+                      style={{
+                        fontSize: '40px',
+                        marginRight: '5px',
+                        marginTop: '5px'
+                      }}
+                    />
+                  </Box>
+                </Tooltip>
               </GridItem>
-              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
-                <DiJava
-                  style={{
-                    fontSize: '40px',
-                    marginRight: '5px',
-                    marginTop: '5px'
-                  }}
-                />
+              <GridItem
+                w="100%"
+                h="10"
+                bg={useColorModeValue('#f0e7db', '#202023')}
+              >
+                <Tooltip label="Nodejs">
+                  <Box display="flex" justifyContent="center">
+                    <IoLogoNodejs
+                      style={{
+                        fontSize: '40px',
+                        marginRight: '5px',
+                        marginTop: '5px'
+                      }}
+                    />
+                  </Box>
+                </Tooltip>
               </GridItem>
-              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
-                <DiGulp style={{
-                    fontSize: '40px',
-                    marginRight: '5px',
-                    marginTop: '5px'
-                  }} />
+              <GridItem
+                w="100%"
+                h="10"
+                bg={useColorModeValue('#f0e7db', '#202023')}
+              >
+                <Tooltip label="Mongodb">
+                  <Box display="flex" justifyContent="center">
+                    <DiMongodb
+                      style={{
+                        fontSize: '40px',
+                        marginRight: '5px',
+                        marginTop: '5px'
+                      }}
+                    />
+                  </Box>
+                </Tooltip>
               </GridItem>
-              <GridItem w="100%" h="10" bg={useColorModeValue('#f0e7db', '#202023')}>
-                <SiTypescript style={{
-                    fontSize: '40px',
-                    marginRight: '5px',
-                    marginTop: '5px'
-                  }} />
+              <GridItem
+                w="100%"
+                h="10"
+                bg={useColorModeValue('#f0e7db', '#202023')}
+              >
+                <Tooltip label="Nestjs">
+                  <Box display="flex" justifyContent="center">
+                    <SiNestjs
+                      style={{
+                        fontSize: '40px',
+                        marginRight: '5px',
+                        marginTop: '5px'
+                      }}
+                    />
+                  </Box>
+                </Tooltip>
+              </GridItem>
+              <GridItem
+                w="100%"
+                h="10"
+                bg={useColorModeValue('#f0e7db', '#202023')}
+              >
+                <Tooltip label="Typescript">
+                  <Box display="flex" justifyContent="center">
+                    <SiTypescript
+                      style={{
+                        fontSize: '40px',
+                        marginRight: '5px',
+                        marginTop: '5px'
+                      }}
+                    />
+                  </Box>
+                </Tooltip>
               </GridItem>
             </Grid>
           </Box>
