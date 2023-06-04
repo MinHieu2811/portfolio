@@ -30,12 +30,14 @@ export default async function handler(req, res) {
       version: 'v4'
     })
 
+    const date = new Date().toLocaleString()
+
     const response = await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.SPREADSHEET_ID,
       range: 'Sheet1!A2:C',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
-        values: [[email, phone, message]]
+        values: [[date, email, phone, message]]
       }
     })
 

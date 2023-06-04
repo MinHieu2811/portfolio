@@ -40,18 +40,17 @@ function FormContact() {
     <Formik
       initialValues={{ email: '', phone: '', message: '' }}
       onSubmit={(values, actions) => {
-        setTimeout(() => {
-          axios.post('/api/sheets', values)?.then((res) => {
-            const success = res?.data?.success
-            if(success) {
-              toast({
-                title: success ? 'Thank you for sending me a message!': 'Something went wrong! Please try again',
-                position: 'top',
-                status: success ? 'success' : 'error',
-                isClosable: true,
-              })
-            }
-          })
+        setTimeout(async () => {
+          const result = await axios.post('/api/sheets', values)
+          const success = result?.data?.success
+          if(success) {
+            toast({
+              title: success ? 'Thank you for sending me a message!': 'Something went wrong! Please try again',
+              position: 'top',
+              status: success ? 'success' : 'error',
+              isClosable: true,
+            })
+          }
           actions.setSubmitting(false)
           actions.resetForm({
             values: {
