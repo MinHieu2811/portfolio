@@ -5,11 +5,13 @@ import {
   Input,
   FormErrorMessage,
   Button,
-  Textarea
+  Textarea,
+  useToast
 } from '@chakra-ui/react'
 import axios from 'axios'
 
 function FormContact() {
+  const toast = useToast()
   function validateEmail(value) {
     let error
     if (!value) {
@@ -39,7 +41,17 @@ function FormContact() {
       initialValues={{ email: '', phone: '', message: '' }}
       onSubmit={(values, actions) => {
         setTimeout(() => {
-          axios.post('/api/sheets', values)?.then((res) => console.log(res?.data))
+          axios.post('/api/sheets', values)?.then((res) => {
+            const success = res?.data?.success
+            if(success) {
+              toast({
+                title: success ? 'Thank you for sending me a message!': 'Something went wrong! Please try again',
+                position: 'top',
+                status: success ? 'success' : 'error',
+                isClosable: true,
+              })
+            }
+          })
           actions.setSubmitting(false)
           actions.resetForm({
             values: {
