@@ -2,12 +2,14 @@ import Head from 'next/head'
 import dynamic from 'next/dynamic'
 import { useState, useEffect } from 'react'
 import NavBar from '../navbar'
-import { Box, Container } from '@chakra-ui/react'
+import { Box, Container, Button } from '@chakra-ui/react'
+import { Tooltip } from '@chakra-ui/react'
 import Footer from '../footer'
 import VoxelDogLoader from '../voxel-dog-loader'
 // import { Progress } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import nProgress from 'nprogress'
+import { AiOutlineArrowUp } from 'react-icons/ai'
 
 const LazyVoxelDog = dynamic(() => import('../voxel-dog'), {
   ssr: false,
@@ -18,34 +20,52 @@ const LazyBackground = dynamic(() => import('../background'), {
   ssr: false
 })
 
-
 const Main = ({ children, router }) => {
   const routerObj = useRouter()
+  const [visible, setVisible] = useState(false)
 
-  const [routeIsChanging, setRouteIsChanging] = useState(false);
+  const [routeIsChanging, setRouteIsChanging] = useState(false)
 
   useEffect(() => {
     routerObj.events.on('routeChangeStart', () => {
       nProgress.start()
-      setRouteIsChanging(true);
-    });
+      setRouteIsChanging(true)
+    })
 
     routerObj.events.on('routeChangeComplete', () => {
       nProgress.done(false)
-      setRouteIsChanging(false);
-    });
+      setRouteIsChanging(false)
+    })
 
-    routerObj.events.on('beforeHistoryChange', (url) => {
-      console.log('history changing to ', url);
-    });
+    routerObj.events.on('beforeHistoryChange', url => {
+      console.log('history changing to ', url)
+    })
 
     return () => {
       routerObj.events.off('routeChangeStart', () => {
-        setRouteIsChanging(false);
-      });
-      routerObj.events.off('routeChangeComplete', () => {});
-    };
-  }, [routerObj]);
+        setRouteIsChanging(false)
+      })
+      routerObj.events.off('routeChangeComplete', () => {})
+    }
+  }, [routerObj])
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      const scrolled = document.documentElement.scrollTop;
+
+        if(scrolled > 300){
+            setVisible(true)
+        }else if(scrolled <= 300){
+            setVisible(false)
+        }
+    });
+  }, [])
+
+  const handleScrollTop = () => {
+    if (typeof window !== 'undefined') {
+      window?.scrollTo({ left: 0, top: 0, behavior: 'smooth' })
+    }
+  }
 
   return (
     <Box as="main" pb={8}>
@@ -63,10 +83,28 @@ const Main = ({ children, router }) => {
       <NavBar path={router.asPath} />
       <LazyBackground />
 
-      <Container maxW="container.md" pt={14} >
+      <Container maxW="container.md" pt={14}>
         <LazyVoxelDog />
 
         {children}
+
+        <Box
+          display="flex"
+          justifyContent="center"
+          position="fixed"
+          width="50px"
+          height="50px"
+          bottom={visible ? "100px" : "110vh"}
+          right="100px"
+          borderRadius="full"
+          transition="all 0.4s ease-in-out"
+        >
+          <Tooltip label="Scroll to top">
+            <Button onClick={handleScrollTop}>
+              <AiOutlineArrowUp />
+            </Button>
+          </Tooltip>
+        </Box>
 
         <Footer />
       </Container>
