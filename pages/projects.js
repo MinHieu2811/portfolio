@@ -6,8 +6,7 @@ import { WorkGridItem } from '../components/grid-item'
 import thumbEcommerce from '../public/images/projects/e-commerce/thumb.png'
 import thumbChatapp from '../public/images/projects/chatapp/thumb.png'
 
-const Works = ({ data }) => {
-  console.log(data);
+const Works = ({ _data }) => {
   return (
     <Layout title="Projects">
       <Container>
