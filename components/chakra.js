@@ -6,7 +6,7 @@ import {
 // import path from "path";
 // import { promises as fs } from "fs";
 import theme from '../lib/theme'
-// import axios from 'axios'
+import axios from 'axios'
 
 export default function Chakra({ cookies, children }) {
   const colorModeManager =
@@ -22,13 +22,11 @@ export default function Chakra({ cookies, children }) {
 }
 
 export async function getServerSideProps({ req }) {
-  // const dataFetch = await axios.get('http://localhost:3000/api/data').then((res) => res?.data)
-  // const jsonDirectory = path.join((process.cwd(), 'lib'))
-  // const fileContents = await fs.readFile(jsonDirectory + '/data.json', 'utf8')
-  // const dataFetch = JSON.parse(fileContents)
+  const dataFetch = await axios.get('http://localhost:3000/api/data').then((res) => res?.data)
+  console.log(dataFetch);
   return {
     props: {
-      // data: dataFetch,
+      data: dataFetch,
       cookies: req.headers.cookie ?? ''
     }
   }

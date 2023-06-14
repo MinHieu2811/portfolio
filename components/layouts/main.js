@@ -76,7 +76,7 @@ const Main = ({ children, router }) => {
         <meta name="author" content="vipers" />
         <link rel="apple-touch-icon" href="apple-touch-icon.png" />
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <title>MinHieu - Homepage</title>
+        <title>MinHieu</title>
       </Head>
       {/* {!routerObj.isReady && <Progress value={40} size="sm" colorScheme="green" isIndeterminate/>} */}
       {routeIsChanging && <nProgress />}
