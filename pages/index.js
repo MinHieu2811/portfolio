@@ -30,7 +30,7 @@ import {
   IoLogoNodejs,
   IoLogoLinkedin
 } from 'react-icons/io5'
-import { SiTypescript } from 'react-icons/si'
+import { SiTypescript, SiExpress } from 'react-icons/si'
 import { DiMongodb } from 'react-icons/di'
 import { SiNestjs, SiPrisma, SiPostgresql } from 'react-icons/si'
 import Image from 'next/image'
@@ -363,6 +363,21 @@ const Home = ({ data }) => {
                   </Box>
                 </Tooltip>
               </GridItem>
+              <GridItem
+              w="100%"
+              h="10"
+              bg={useColorModeValue('#f0e7db', '#202023')}
+            >
+              <Box display="flex" justifyContent="center">
+                    <SiExpress
+                      style={{
+                        fontSize: '40px',
+                        marginRight: '5px',
+                        marginTop: '5px'
+                      }}
+                    />
+                  </Box>
+            </GridItem>
               <GridItem
                 w="100%"
                 h="10"
