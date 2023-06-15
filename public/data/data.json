@@ -62,6 +62,7 @@
     },
     "project": {
       "ecommerce": {
+        "id": "ecommerce",
         "title": "SolStore",
         "images": ["/images/projects/e-commerce/banner.png", "/images/projects/e-commerce/category.png", "/images/projects/e-commerce/collections.png", "/images/projects/e-commerce/product.png", "/images/projects/e-commerce/thumb.png"],
         "shortDesc": "An E-Commerce website built-in with ReactJs, Nodejs, Express",
@@ -85,6 +86,8 @@
         }
       },
       "airbnb": {
+        "linkDeploy": "https://airbnb-ver2.vercel.app/",
+        "id":"airbnb",
         "title": "AirBnB Clone",
         "images": ["/images/projects/airbnb/1.png", "/images/projects/airbnb/2.png", "/images/projects/airbnb/3.png", "/images/projects/airbnb/4.png", "/images/projects/airbnb/5.png", "/images/projects/airbnb/6.png"],
         "shortDesc": "An AirBnB clone website built-in with Nextjs",
@@ -107,7 +110,8 @@
           ]
         }
       },
-      "cmsTemplate": {
+      "cms": {
+        "id":"cms",
         "title": "Content Management System",
         "images": ["/images/projects/cms/1.png", "/images/projects/cms/2.png", "/images/projects/cms/3.png", "/images/projects/cms/4.png", "/images/projects/cms/5.png", "/images/projects/cms/6.png"],
         "shortDesc": "An content management system website built-in with Nextjs",
@@ -133,6 +137,7 @@
         }
       },
       "chatapp": {
+        "id": "chatapp",
         "title": "WhatsApp",
         "images": ["/images/projects/chatapp/thumb.png", "/images/projects/chatapp/messages.png", "/images/projects/chatapp/login.png", "/images/projects/chatapp/conversation2.png", "/images/projects/chatapp/conversation.png"],
         "description": "A real-time chatapp built-in with NextJs and Firebase. User can login, create new conversation, chat and search users",

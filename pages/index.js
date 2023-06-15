@@ -10,7 +10,8 @@ import {
   ListItem,
   useColorModeValue,
   chakra,
-  GridItem
+  GridItem,
+  SimpleGrid
 } from '@chakra-ui/react'
 import { Tooltip } from '@chakra-ui/react'
 import Paragraph from '../components/paragraph'
@@ -36,7 +37,7 @@ import Image from 'next/image'
 import styled from '@emotion/styled'
 import NextJsIcon from '../components/icons/nextjs'
 import FormContact from '../components/form'
-import data from '../lib/data'
+import { WorkGridItem } from '../components/grid-item'
 
 const ProfileImage = chakra(Image, {
   shouldForwardProp: prop => ['width', 'height', 'src', 'alt'].includes(prop)
@@ -83,7 +84,7 @@ const MotionPara = styled('div')`
   }
 `
 
-const Home = () => {
+const Home = ({ data }) => {
   const validateTypePlatform = title => {
     const titleString = title.toString()
     if (titleString === 'Github') {
@@ -109,16 +110,16 @@ const Home = () => {
           bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
           css={{ backdropFilter: 'blur(10px)' }}
         >
-          {data.title}
+          {data?.title}
         </Box>
 
         <Box display={{ md: 'flex' }}>
           <Box flexGrow={1}>
             <Heading as="h2" variant="page-title">
-              {data.name}
+              {data?.name}
             </Heading>
             <MotionDiv>
-              {data.animated_para.map((item, index) => (
+              {data?.animated_para?.map((item, index) => (
                 <MotionPara
                   bg={useColorModeValue('#f0e7db', '#202023')}
                   key={index}
@@ -157,9 +158,9 @@ const Home = () => {
 
         <Section delay={0.1}>
           <Heading as="h3" variant="section-title">
-            {data.work.title}
+            {data?.work?.title}
           </Heading>
-          <Paragraph>{data.work.content}</Paragraph>
+          <Paragraph>{data?.work?.content}</Paragraph>
 
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <Tooltip label="Download my CV">
@@ -174,37 +175,37 @@ const Home = () => {
 
         <Section delay={0.3}>
           <Heading as="h3" variant="section-title">
-            {data.bio.title}
+            {data?.bio?.title}
           </Heading>
-          {data.bio.content.map((item, index) => (
+          {data?.bio?.content.map((item, index) => (
             <BioSection key={index}>
-              <BioYear>{item.year}</BioYear>
-              {item.event}
+              <BioYear>{item?.year}</BioYear>
+              {item?.event}
             </BioSection>
           ))}
         </Section>
 
         <Section delay={0.5}>
           <Heading as="h3" variant="section-title">
-            {data.hobby.title}
+            {data?.hobby?.title}
           </Heading>
-          <Paragraph>{data.hobby.content}</Paragraph>
+          <Paragraph>{data?.hobby?.content}</Paragraph>
         </Section>
 
         <Section delay={0.7}>
           <Heading as="h3" variant="section-title">
-            {data.online.title}
+            {data?.online?.title}
           </Heading>
           <List>
-            {data.online.content.map((item, index) => (
+            {data?.online?.content?.map((item, index) => (
               <ListItem key={index}>
-                <Link href={item.link} target="_blank">
+                <Link href={item?.link} target="_blank">
                   <Button
                     variant="ghost"
                     colorScheme="teal"
                     leftIcon={validateTypePlatform(item.type)}
                   >
-                    {item.display}
+                    {item?.display}
                   </Button>
                 </Link>
               </ListItem>
@@ -418,6 +419,33 @@ const Home = () => {
         </Section>
 
         <Section delay={0.11}>
+        <Heading as="h3" fontSize={20} mb={5} variant="section-title">
+          Projects
+        </Heading>
+
+        <SimpleGrid columns={[1, 1, 2]} gap={6}>
+          {Object.keys(data?.project)?.slice(2)?.map((item) => (
+            <Section key={data?.project[item]?.id}>
+              <WorkGridItem
+                id={data?.project[item]?.id}
+                title={data?.project[item]?.title}
+                thumbnail={data?.project[item]?.images[0]}
+              >
+                {data?.project[item]?.shortDesc}
+              </WorkGridItem>
+            </Section>
+          ))}
+        </SimpleGrid>
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Button sx={{ margin: '5px auto' }}>
+                <Link href="/projects">
+                  See more
+                </Link>
+              </Button>
+          </Box>
+        </Section>
+
+        <Section delay={0.14}>
           <Heading as="h3" variant="section-title">
             Contacts Me
           </Heading>

@@ -8,7 +8,8 @@ import {
   LinkBox,
   LinkOverlay,
   Button,
-  ListIcon
+  ListIcon,
+  Link
 } from '@chakra-ui/react'
 import { Pagination } from 'swiper'
 import Layout from '../../components/layouts/article'
@@ -19,10 +20,10 @@ import NextLink from 'next/link'
 import 'swiper/css'
 import { IoLogoGithub } from 'react-icons/io5'
 import { useRouter } from 'next/router'
+import { BsFillCheckCircleFill } from 'react-icons/bs';
 import 'swiper/css/pagination';
-import data from '../../lib/data'
 
-const Ecommerce = () => {
+const Ecommerce = ({data}) => {
   const router = useRouter()
   const id = router.query.id
 
@@ -55,10 +56,16 @@ const Ecommerce = () => {
         </Box>
         <Box>
           <Heading as="h2" noOfLines={1}>
-            {dataProject && dataProject.title}
+            {dataProject && dataProject?.title}
           </Heading>
+          {dataProject?.linkDeploy?.length && <Box display="flex" alignItems="center">
+            <BsFillCheckCircleFill /> 
+            <Text fontSize="md" marginLeft={2} marginY={2}>
+            Deployed at: <Link  target='_blank' href={dataProject?.linkDeploy}>{dataProject?.linkDeploy}</Link>
+          </Text>
+          </Box>}
           <Text fontSize="md" marginY={2}>
-            {dataProject && dataProject.description}
+            {dataProject && dataProject?.description}
           </Text>
           <LinkBox
             as={NextLink}
@@ -88,10 +95,10 @@ const Ecommerce = () => {
             <ListItem>
               <ListIcon as={MdSettings} />
               Front-end:{' '}
-              {dataProject && dataProject.technology.frontend.length > 1 ? (
-                <span>{dataProject.technology.frontend.join(', ')}</span>
+              {dataProject && dataProject?.technology?.frontend?.length > 1 ? (
+                <span>{dataProject?.technology?.frontend?.join(', ')}</span>
               ) : (
-                dataProject && dataProject.technology.frontend.map((item, index) => (
+                dataProject && dataProject?.technology?.frontend?.map((item, index) => (
                   <span key={index}>{item}</span>
                 ))
               )}
@@ -99,10 +106,10 @@ const Ecommerce = () => {
             <ListItem>
               <ListIcon as={MdSettings} />
               Back-end:{' '}
-              {dataProject && dataProject.technology.backend.length > 1 ? (
-                <span>{dataProject.technology.backend.join(', ')}</span>
+              {dataProject && dataProject?.technology?.backend?.length > 1 ? (
+                <span>{dataProject?.technology?.backend?.join(', ')}</span>
               ) : (
-                dataProject && dataProject.technology.backend.map((item, index) => (
+                dataProject && dataProject?.technology?.backend?.map((item, index) => (
                   <span key={index}>{item}</span>
                 ))
               )}
@@ -110,7 +117,7 @@ const Ecommerce = () => {
             <ListItem>
               <ListIcon as={MdSettings} />
               Database:{' '}
-              <span>{dataProject && dataProject.technology.database.join(', ')}</span>
+              <span>{dataProject && dataProject?.technology?.database.join(', ')}</span>
             </ListItem>
           </List>
         </Box>

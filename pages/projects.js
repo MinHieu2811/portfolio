@@ -3,36 +3,29 @@ import Layout from '../components/layouts/article'
 import Section from '../components/section'
 import { WorkGridItem } from '../components/grid-item'
 
-import thumbEcommerce from '../public/images/projects/e-commerce/thumb.png'
-import thumbChatapp from '../public/images/projects/chatapp/thumb.png'
+// import thumbEcommerce from '../public/images/projects/e-commerce/thumb.png'
+// import thumbChatapp from '../public/images/projects/chatapp/thumb.png'
 
-const Works = ({ _data }) => {
+const Works = ({ data }) => {
   return (
     <Layout title="Projects">
       <Container>
-        <Heading as="h3" fontSize={20} mb={4}>
-          Works
+        <Heading as="h3" fontSize={20} mb={4} variant="section-title">
+          Projects
         </Heading>
 
         <SimpleGrid columns={[1, 1, 2]} gap={6}>
-          <Section>
-            <WorkGridItem
-              id="chatapp"
-              title="Chat App"
-              thumbnail={thumbChatapp}
-            >
-              A real-time chat app built-in with NextJs, Firebase
-            </WorkGridItem>
-          </Section>
-          <Section>
-            <WorkGridItem
-              id="ecommerce"
-              title="SolStore"
-              thumbnail={thumbEcommerce}
-            >
-              An E-Commerce website built-in with ReactJs, Nodejs, Express
-            </WorkGridItem>
-          </Section>
+          {Object.keys(data?.project)?.map((item) => (
+            <Section key={data?.project[item]?.id}>
+              <WorkGridItem
+                id={data?.project[item]?.id}
+                title={data?.project[item]?.title}
+                thumbnail={data?.project[item]?.images[0]}
+              >
+                {data?.project[item]?.shortDesc}
+              </WorkGridItem>
+            </Section>
+          ))}
         </SimpleGrid>
       </Container>
     </Layout>
