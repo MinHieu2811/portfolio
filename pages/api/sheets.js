@@ -30,9 +30,9 @@ export default async function handler(req, res) {
       version: 'v4'
     })
 
-    const date = new Date().toLocaleString()
+    const date = new Date().toLocaleString('en-US', { timeZone: 'Asia/Ho_Chi_Minh' });
 
-    const response = await sheets.spreadsheets.values.append({
+    await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.SPREADSHEET_ID,
       range: 'Sheet1!A2:C',
       valueInputOption: 'USER_ENTERED',
@@ -41,7 +41,7 @@ export default async function handler(req, res) {
       }
     })
 
-    res.status(201)?.json({response, success: true})
+    res.status(201)?.json({success: true})
   } catch (error) {
     console.log(error);
     return res.status(500).json(error)
