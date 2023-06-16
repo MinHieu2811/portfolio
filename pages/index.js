@@ -368,17 +368,17 @@ const Home = ({ data }) => {
               h="10"
               bg={useColorModeValue('#f0e7db', '#202023')}
             >
-              <Box display="flex" justifyContent="center">
-                    <Tooltip label="ExpressJs">
-                      <SiExpress
-                        style={{
-                          fontSize: '40px',
-                          marginRight: '5px',
-                          marginTop: '5px'
-                        }}
-                      />
-                    </Tooltip>
-              </Box>
+              <Tooltip label="ExpressJs">
+                <Box display="flex" justifyContent="center">
+                  <SiExpress
+                    style={{
+                      fontSize: '40px',
+                      marginRight: '5px',
+                      marginTop: '5px'
+                    }}
+                  />
+                </Box>
+              </Tooltip>
             </GridItem>
               <GridItem
                 w="100%"
