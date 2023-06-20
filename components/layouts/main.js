@@ -6,10 +6,11 @@ import { Box, Container, Button } from '@chakra-ui/react'
 import { Tooltip } from '@chakra-ui/react'
 import Footer from '../footer'
 import VoxelDogLoader from '../voxel-dog-loader'
-// import { Progress } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import nProgress from 'nprogress'
+import NProgress from 'nprogress'
 import { AiOutlineArrowUp } from 'react-icons/ai'
+import 'nprogress/nprogress.css'
+import { useToggleBackground, BackgroundProvider } from '../../context/toggleBackground'
 
 const LazyVoxelDog = dynamic(() => import('../voxel-dog'), {
   ssr: false,
@@ -20,21 +21,21 @@ const LazyBackground = dynamic(() => import('../background'), {
   ssr: false
 })
 
+NProgress.configure({ easing: 'ease', speed: 500 })
+
 const Main = ({ children, router }) => {
   const routerObj = useRouter()
   const [visible, setVisible] = useState(false)
-
-  const [routeIsChanging, setRouteIsChanging] = useState(false)
+  // const [initial, syncedState] = useSyncedState(false)
+  const { isVisible } = useToggleBackground()
 
   useEffect(() => {
     routerObj.events.on('routeChangeStart', () => {
-      nProgress.start()
-      setRouteIsChanging(true)
+      NProgress?.start()
     })
 
     routerObj.events.on('routeChangeComplete', () => {
-      nProgress.done(false)
-      setRouteIsChanging(false)
+      NProgress.done(false)
     })
 
     routerObj.events.on('beforeHistoryChange', url => {
@@ -42,23 +43,21 @@ const Main = ({ children, router }) => {
     })
 
     return () => {
-      routerObj.events.off('routeChangeStart', () => {
-        setRouteIsChanging(false)
-      })
+      routerObj.events.off('routeChangeStart', () => {})
       routerObj.events.off('routeChangeComplete', () => {})
     }
   }, [routerObj])
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      const scrolled = document.documentElement.scrollTop;
+      const scrolled = document.documentElement.scrollTop
 
-        if(scrolled > 300){
-            setVisible(true)
-        }else if(scrolled <= 300){
-            setVisible(false)
-        }
-    });
+      if (scrolled > 300) {
+        setVisible(true)
+      } else if (scrolled <= 300) {
+        setVisible(false)
+      }
+    })
   }, [])
 
   const handleScrollTop = () => {
@@ -78,36 +77,35 @@ const Main = ({ children, router }) => {
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <title>MinHieu</title>
       </Head>
-      {/* {!routerObj.isReady && <Progress value={40} size="sm" colorScheme="green" isIndeterminate/>} */}
-      {routeIsChanging && <nProgress />}
-      <NavBar path={router.asPath} />
-      <LazyBackground />
+      <BackgroundProvider>
+        <NavBar path={router.asPath} />
+        <LazyBackground visible={isVisible} />
 
-      <Container maxW="container.md" pt={14}>
-        <LazyVoxelDog />
+        <Container maxW="container.md" pt={14}>
+          <LazyVoxelDog />
+          {children}
 
-        {children}
+          <Box
+            display="flex"
+            justifyContent="center"
+            position="fixed"
+            width="50px"
+            height="50px"
+            bottom={visible ? '100px' : '110vh'}
+            right="100px"
+            borderRadius="full"
+            transition="all 0.4s ease-in-out"
+          >
+            <Tooltip label="Scroll to top">
+              <Button onClick={handleScrollTop}>
+                <AiOutlineArrowUp />
+              </Button>
+            </Tooltip>
+          </Box>
 
-        <Box
-          display="flex"
-          justifyContent="center"
-          position="fixed"
-          width="50px"
-          height="50px"
-          bottom={visible ? "100px" : "110vh"}
-          right="100px"
-          borderRadius="full"
-          transition="all 0.4s ease-in-out"
-        >
-          <Tooltip label="Scroll to top">
-            <Button onClick={handleScrollTop}>
-              <AiOutlineArrowUp />
-            </Button>
-          </Tooltip>
-        </Box>
-
-        <Footer />
-      </Container>
+          <Footer />
+        </Container>
+      </BackgroundProvider>
     </Box>
   )
 }
