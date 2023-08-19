@@ -32,7 +32,7 @@ import {
 } from 'react-icons/io5'
 import { SiTypescript, SiExpress } from 'react-icons/si'
 import { DiMongodb } from 'react-icons/di'
-import { SiNestjs, SiPrisma, SiPostgresql } from 'react-icons/si'
+import { SiPrisma } from 'react-icons/si'
 import Image from 'next/image'
 import styled from '@emotion/styled'
 import NextJsIcon from '../components/icons/nextjs'
@@ -146,7 +146,7 @@ const Home = ({ data }) => {
               overflow="hidden"
             >
               <ProfileImage
-                src="/images/avatar.jpg"
+                src="/images/avatar_ver2.png"
                 alt="Profile image"
                 borderRadius="full"
                 width="100"
@@ -329,7 +329,7 @@ const Home = ({ data }) => {
                   </Box>
                 </Tooltip>
               </GridItem>
-              <GridItem
+              {/* <GridItem
                 w="100%"
                 h="10"
                 bg={useColorModeValue('#f0e7db', '#202023')}
@@ -345,7 +345,7 @@ const Home = ({ data }) => {
                     />
                   </Box>
                 </Tooltip>
-              </GridItem>
+              </GridItem> */}
               <GridItem
                 w="100%"
                 h="10"
@@ -397,7 +397,7 @@ const Home = ({ data }) => {
                   </Box>
                 </Tooltip>
               </GridItem>
-              <GridItem
+              {/* <GridItem
                 w="100%"
                 h="10"
                 bg={useColorModeValue('#f0e7db', '#202023')}
@@ -413,7 +413,7 @@ const Home = ({ data }) => {
                     />
                   </Box>
                 </Tooltip>
-              </GridItem>
+              </GridItem> */}
               <GridItem
                 w="100%"
                 h="10"
@@ -464,7 +464,7 @@ const Home = ({ data }) => {
 
         <Section delay={0.14}>
           <Heading as="h3" variant="section-title">
-            Contacts Me
+            Contact Me
           </Heading>
           <FormContact />
         </Section>

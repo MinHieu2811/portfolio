@@ -10,7 +10,11 @@ import { useRouter } from 'next/router'
 import NProgress from 'nprogress'
 import { AiOutlineArrowUp } from 'react-icons/ai'
 import 'nprogress/nprogress.css'
-import { useToggleBackground, BackgroundProvider } from '../../context/toggleBackground'
+import {
+  useToggleBackground,
+  BackgroundProvider
+} from '../../context/toggleBackground'
+import { useCheckMobile } from '../../hooks/useCheckMobile'
 
 const LazyVoxelDog = dynamic(() => import('../voxel-dog'), {
   ssr: false,
@@ -65,6 +69,7 @@ const Main = ({ children, router }) => {
       window?.scrollTo({ left: 0, top: 0, behavior: 'smooth' })
     }
   }
+  const isMobile = useCheckMobile()
 
   return (
     <Box as="main" pb={8}>
@@ -86,7 +91,7 @@ const Main = ({ children, router }) => {
           {children}
 
           <Box
-            display="flex"
+            display={isMobile ? 'none' : 'flex'}
             justifyContent="center"
             position="fixed"
             width="50px"
