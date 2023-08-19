@@ -13,6 +13,7 @@ import {
   GridItem,
   SimpleGrid
 } from '@chakra-ui/react'
+import NextLink from 'next/link'
 import { Tooltip } from '@chakra-ui/react'
 import Paragraph from '../components/paragraph'
 import { BioSection, BioYear } from '../components/bio'
@@ -455,7 +456,7 @@ const Home = ({ data }) => {
         </SimpleGrid>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <Button sx={{ margin: '5px auto' }}>
-                <Link href="/projects">
+                <Link as={NextLink} href="/projects">
                   See more
                 </Link>
               </Button>
