@@ -164,13 +164,11 @@ const Home = ({ data }) => {
           <Paragraph>{data?.work?.content}</Paragraph>
 
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Tooltip label="Download my CV">
-              <Button sx={{ margin: '20px auto' }}>
-                <Link href="cv.pdf" download>
-                  Download CV
-                </Link>
-              </Button>
-            </Tooltip>
+            <Button sx={{ margin: '20px auto' }}>
+              <Link href="Nguyen_Minh_Hieu_CV.pdf" download>
+                Download CV
+              </Link>
+            </Button>
           </Box>
         </Section>
 
@@ -365,22 +363,22 @@ const Home = ({ data }) => {
                 </Tooltip>
               </GridItem>
               <GridItem
-              w="100%"
-              h="10"
-              bg={useColorModeValue('#f0e7db', '#202023')}
-            >
-              <Tooltip label="ExpressJs">
-                <Box display="flex" justifyContent="center">
-                  <SiExpress
-                    style={{
-                      fontSize: '40px',
-                      marginRight: '5px',
-                      marginTop: '5px'
-                    }}
-                  />
-                </Box>
-              </Tooltip>
-            </GridItem>
+                w="100%"
+                h="10"
+                bg={useColorModeValue('#f0e7db', '#202023')}
+              >
+                <Tooltip label="ExpressJs">
+                  <Box display="flex" justifyContent="center">
+                    <SiExpress
+                      style={{
+                        fontSize: '40px',
+                        marginRight: '5px',
+                        marginTop: '5px'
+                      }}
+                    />
+                  </Box>
+                </Tooltip>
+              </GridItem>
               <GridItem
                 w="100%"
                 h="10"
@@ -437,29 +435,31 @@ const Home = ({ data }) => {
         </Section>
 
         <Section delay={0.11}>
-        <Heading as="h3" fontSize={20} mb={5} variant="section-title">
-          Projects
-        </Heading>
+          <Heading as="h3" fontSize={20} mb={5} variant="section-title">
+            Projects
+          </Heading>
 
-        <SimpleGrid columns={[1, 1, 2]} gap={6}>
-          {Object.keys(data?.project)?.slice(2)?.map((item) => (
-            <Section key={data?.project[item]?.id}>
-              <WorkGridItem
-                id={data?.project[item]?.id}
-                title={data?.project[item]?.title}
-                thumbnail={data?.project[item]?.images[0]}
-              >
-                {data?.project[item]?.shortDesc}
-              </WorkGridItem>
-            </Section>
-          ))}
-        </SimpleGrid>
-        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Button sx={{ margin: '5px auto' }}>
-                <Link as={NextLink} href="/projects">
-                  See more
-                </Link>
-              </Button>
+          <SimpleGrid columns={[1, 1, 2]} gap={6}>
+            {Object.keys(data?.project)
+              ?.slice(2)
+              ?.map(item => (
+                <Section key={data?.project[item]?.id}>
+                  <WorkGridItem
+                    id={data?.project[item]?.id}
+                    title={data?.project[item]?.title}
+                    thumbnail={data?.project[item]?.images[0]}
+                  >
+                    {data?.project[item]?.shortDesc}
+                  </WorkGridItem>
+                </Section>
+              ))}
+          </SimpleGrid>
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            <Button sx={{ margin: '5px auto' }}>
+              <Link as={NextLink} href="/projects">
+                See more
+              </Link>
+            </Button>
           </Box>
         </Section>
 
